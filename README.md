@@ -4,22 +4,16 @@
 
 
 ### Getting started
-cd baseImages or mkdir -p baseImages
-
+```
+mkdir -p baseImages
+cd baseImages
 wget or curl https://images.sick.codes/BaseSystem_Monterey.dmg
-
 cd ..
-
 docker-compose build
-
 docker-compose up -d
-
+```
 OS X bootloader should startup shortly after
 
+The docker volumes would be named something like mysickcodes_disk. Use ```docker volume ls``` to verify.
 
-
-The docker volumes would be named like this, use docker volume ls:
-
-mysickcodes_disk
-
-to start over delete this volume
+To start over delete this volume ```docker volume delete mysickcodes_disk```

@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  osx:
+    build:
+      context: .
+      args:
+        - SIZE=200G
+        - VERSION=monterey
+    image: sickcodes/docker-osx
+    privileged: true
+    environment:
+      DISPLAY: ${DISPLAY:-:0.0}
+      RAM: "max"
+      #WIDTH: 2560
+      #HEIGHT: 1600
+      GENERATE_SPECIFIC: "true"
+      SERIAL: "C02TW0WAHX87"
+      BOARD_SERIAL: "C027251024NJG36UE"
+      UUID: "5CCB366D-9118-4C61-A00A-E5BAF3BED451"
+      MAC_ADDRESS: "A8:5C:2C:9A:46:2F"
+      DEVICE_MODEL: "iMacPro1,1"
+      AUDIO_DRIVER: "pa,server=unix:/tmp/pulseaudio.socket"
+      PULSE_SERVER: "unix:/tmp/pulseaudio.socket"
+    network_mode: "host"
+    cap_add:
+      - ALL
+    volumes:
+      - disk:/home/arch/OSX-KVM/
+      - ./tmp/.X11-unix:/tmp/.X11-unix
+      - "/run/user/1000/pulse/native:/tmp/pulseaudio.socket"
+volumes:
+  disk:

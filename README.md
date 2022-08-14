@@ -12,7 +12,9 @@ cd ..
 docker-compose build
 docker-compose up -d
 ```
-OS X bootloader should startup shortly after
+OS X bootloader should startup shortly after.
+
+From there ```docker-compose up -d``` is how you can spin back up a container with your os x data still in the volume.
 
 The docker volumes would be named something like mysickcodes_disk. Use ```docker volume ls``` to verify.
 
